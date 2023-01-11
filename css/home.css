@@ -139,7 +139,7 @@ main #content {
     border-radius: 3rem;
     font-size: 0.9em;
     line-height: 30px;
-    padding: 18px 35px;
+    padding: 25px 15px;
     margin-bottom: 25px;
     border: 0;
 }
@@ -163,7 +163,7 @@ main #content {
 }
 
 .download-button label {
-    margin-left: 15px;
+    margin-top: 18px;
 }
 
 @media (max-width: 575px) {
@@ -178,7 +178,6 @@ main #content {
     }
 
     .download-button {
-        width: auto;
         margin-bottom: 0;
         margin-right: 40px;
     }
