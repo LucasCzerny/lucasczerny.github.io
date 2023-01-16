@@ -1,4 +1,4 @@
-const NR_OF_SECTIONS = 4;
+/*const NR_OF_SECTIONS = 4;
 let sectionHeights = [];
 
 function setSectionHeights() {
@@ -41,6 +41,7 @@ window.addEventListener("load", () => {
 
 window.addEventListener("resize", setSectionHeights);
 window.addEventListener("scroll", changeActiveLink);
+*/
 
 const header = document.querySelector("nav");
 

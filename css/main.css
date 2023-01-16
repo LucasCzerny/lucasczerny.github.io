@@ -15,7 +15,7 @@
 }
 
 body {
-    font-family: "Poppins", sans-serif, Arial, serif !important;
+    font-family: "PoppinsRegular", sans-serif, Arial, serif !important;
     color: var(--secondary-white-text);
     background-color: var(--main-grey) !important;
 }
@@ -26,8 +26,7 @@ body {
 
 .big-heading {
     color: var(--primary-white-text);
-    font-weight: 200;    
-    font-size: 40px;
+    font-family: "PoppinsThin", "PoppinsRegular", sans-serif, Arial, serif !important;
     letter-spacing: 2px;
 }
 
@@ -40,10 +39,10 @@ body {
 
 .body-text {
     color: var(--secondary-white-text);
+    font-family: "PoppinsLight", "PoppinsRegular", sans-serif, Arial, serif !important;
     font-size: 16px;
     line-height: 15px;
     letter-spacing: 1px;
-    font-weight: 300;
 }
 
 /* NAV */
