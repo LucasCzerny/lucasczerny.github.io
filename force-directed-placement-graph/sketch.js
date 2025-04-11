@@ -6,7 +6,9 @@ let nrGroupsSelect;
 let groups;
 
 const colors = ["#e6194b", "#3cb44b", "#ffe119", "#4363d8", "#f58231", "#911eb4", "#46f0f0", "#f032e6"];
-const attractForce = 0.5;
+const attractForce = 0.005;
+const repulseForce = 1000.0;
+const minNodeDistance = 50;
 
 function setup() {
   width = window.innerWidth;
@@ -54,19 +56,50 @@ function resizeWindow() {
 function draw() {
   background("#202020");
 
-  // TODO: use fucking p5 vector
   for (let group of groups) {
-    for (let position1 of group) {
-      for (let position2 of group) {
-        const distance = 
+    for (let node of group) {
+      const nodePosition = nodes[node];
+      let force = createVector(0, 0);
+    
+      for (let other of group) {
+        if (node == other) {
+          continue;
+        }
+      
+        const otherPosition = nodes[other];
+
+        let direction = p5.Vector.sub(otherPosition, nodePosition);
+        const distance = direction.mag();
+        direction.normalize();
+
+        force.add(direction.mult(attractForce * (distance - minNodeDistance)));
       }
+
+      // repulsion to all other nodes
+      for (let [other, otherPosition] of nodes.entries()) {
+        if (node == other) {
+          continue;
+        }
+      
+        let direction = p5.Vector.sub(otherPosition, nodePosition);
+        const distance = direction.mag();
+        direction.normalize();
+
+        // dampen repulsion
+        if (distance < 500) {
+          force.add(direction.mult(-repulseForce / (distance * distance)));
+        }
+      }
+
+      nodes[node].add(force);
     }
   }
 
   for (let [index, group] of groups.entries()) {
     fill(colors[index]);
-    for (let position of group) {
-      circle(position[0], position[1], 10);
+    for (let node of group) {
+      const nodePosition = nodes[node];
+      circle(nodePosition.x, nodePosition.y, 10);
     }
   }
 }
@@ -75,15 +108,17 @@ function createGroups() {
   const nrNodes = nrNodesSelect.selected();
   const nrGroups = nrGroupsSelect.selected();
   
+  nodes = [];
   groups = Array.from({ length: nrGroups }, () => []);
 
   for (let i = 0; i < nrNodes; i++) {
     const groupIndex = Math.floor(Math.random() * nrGroups);
-    const randomPosition = [
+    const randomPosition = createVector(
       Math.floor(Math.random() * width),
       Math.floor(Math.random() * height),
-    ];
+    );
     
-    groups[groupIndex].push(randomPosition);
+    nodes.push(randomPosition);
+    groups[groupIndex].push(i);
   }
 }
