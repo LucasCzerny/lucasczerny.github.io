@@ -1,0 +1,15 @@
+---
+layout: default
+title: Terms
+---
+<h1>Terms</h1>
+
+<ul class="terms">
+  {% assign sorted_terms = site.terms | sort_natural: "title" %}
+  {% for term in sorted_terms %}
+    <li>
+      <h2><a href="{{ term.url | relative_url }}">{{ term.title }}</a></h2>
+      <p>{{ term.content | markdownify | strip_html | strip_newlines | truncate: 160 }}</p>
+    </li>
+  {% endfor %}
+</ul>

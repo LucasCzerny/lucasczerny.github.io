@@ -1,0 +1,43 @@
+body {
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem;
+  color: #222;
+}
+
+header {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 2rem;
+}
+
+header a {
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+}
+
+a {
+  color: #0366d6;
+}
+
+.terms {
+  list-style: none;
+  padding: 0;
+}
+
+.terms li {
+  margin-bottom: 2rem;
+}
+
+.terms h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.terms p {
+  margin: 0.25rem 0 0;
+  color: #555;
+}

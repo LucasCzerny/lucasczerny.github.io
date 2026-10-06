@@ -1,0 +1,16 @@
+title: Glossary
+description: A collection of terms
+baseurl: ""
+url: ""
+
+collections:
+  terms:
+    output: true
+    permalink: /terms/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: terms
+    values:
+      layout: term
