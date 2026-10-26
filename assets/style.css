@@ -33,10 +33,6 @@ img {
   padding: 0;
 }
 
-.terms li {
-  margin-bottom: 2rem;
-}
-
 .terms h2 {
   margin: 0;
   font-size: 1.25rem;
@@ -49,6 +45,10 @@ article h1 {
 .terms p {
   margin: 0.4rem 0 0;
   color: #555;
+}
+
+.term {
+  margin-bottom: 0.5rem;
 }
 
 /* Tags */
@@ -125,6 +125,10 @@ article h1 {
   flex-wrap: wrap;
   gap: 0.35rem;
   margin: 0.4rem 0 0;
+}
+
+.term-tags li {
+  margin-bottom: 1rem;
 }
 
 [hidden] {
