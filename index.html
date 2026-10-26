@@ -45,10 +45,10 @@ title: Terms
   {%- for term in sorted_terms %}
     <li class="term">
       <h2><a href="{{ term.url | relative_url }}">{{ term.title }}</a></h2>
-      <p>{{ term.content | markdownify | strip_html | strip_newlines | truncate: 160 }}</p>
       {% include tag-chips.html tags=term.tags %}
+      <p>{{ term.content | markdownify | strip_html | strip_newlines | truncate: 160 }}</p>
     </li>
   {%- endfor %}
 </ul>
 
-<script src="{{ '/assets/terms-filter.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/terms-filter.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

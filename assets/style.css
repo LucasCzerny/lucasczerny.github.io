@@ -42,8 +42,12 @@ img {
   font-size: 1.25rem;
 }
 
+article h1 {
+  margin-bottom: 0.25rem;
+}
+
 .terms p {
-  margin: 0.25rem 0 0;
+  margin: 0.4rem 0 0;
   color: #555;
 }
 
@@ -53,54 +57,52 @@ img {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.4rem;
-  margin: 0 0 0.5rem;
+  gap: 0.35rem;
+  margin: 0 0 0.25rem;
 }
 
 .tag-filter-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #888;
-  margin-right: 0.15rem;
+  color: #8a8a8a;
+  margin-right: 0.25rem;
 }
 
 .tag-chip {
   display: inline-block;
   font: inherit;
-  font-size: 0.8rem;
-  line-height: 1.3;
-  padding: 0.15rem 0.55rem;
-  border: 1px solid #d0d7de;
-  border-radius: 999px;
-  background: #f6f8fa;
-  color: #444;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid #0366d6;
+  border-radius: 3px;
+  background: #e8f2fe;
+  color: #0366d6;
   text-decoration: none;
   cursor: pointer;
 }
 
 .tag-chip:hover {
-  border-color: #0366d6;
-  color: #0366d6;
+  background: #d3e6fd;
 }
 
 .tag-chip.is-active,
 .tag-chip[aria-pressed="true"] {
   background: #0366d6;
-  border-color: #0366d6;
   color: #fff;
 }
 
 .tag-chip:focus-visible {
   outline: 2px solid #0366d6;
-  outline-offset: 2px;
+  outline-offset: 1px;
 }
 
 .tag-clear {
   font: inherit;
-  font-size: 0.8rem;
-  padding: 0.15rem 0.3rem;
+  font-size: 0.75rem;
+  padding: 0.1rem 0.2rem;
   border: 0;
   background: none;
   color: #0366d6;
@@ -109,8 +111,8 @@ img {
 }
 
 .tag-status {
-  margin: 0 0 1.5rem;
-  font-size: 0.9rem;
+  margin: 0.25rem 0 1.5rem;
+  font-size: 0.85rem;
   color: #666;
 }
 
@@ -121,10 +123,8 @@ img {
 .term-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 0;
+  gap: 0.35rem;
+  margin: 0.4rem 0 0;
 }
 
 [hidden] {

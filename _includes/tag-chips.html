@@ -1,20 +1,28 @@
+{%- comment -%}
+  Renders the tags of a single term as chips.
+
+  Parameters:
+    tags - list of tags from the term front matter; a comma separated
+           string ("graph, basics") is accepted too
+    url  - optional. When set, each chip links to <url>?tag=<tag>, which the
+           index page reads to pre-filter the term list. Without it the chips
+           are buttons that filter the list in place (used on the index).
+{%- endcomment -%}
 {%- assign chips_tags = include.tags -%}
 {%- if chips_tags.first == nil and chips_tags.size > 0 -%}
   {%- assign chips_tags = chips_tags | split: "," -%}
 {%- endif -%}
 {%- if chips_tags.size > 0 -%}
-<ul class="term-tags">
+<div class="term-tags">
   {%- for raw_tag in chips_tags -%}
     {%- assign tag = raw_tag | strip -%}
-    {%- if tag != "" %}
-  <li>
-    {%- if include.url -%}
-    <a class="tag-chip" href="{{ include.url }}?tag={{ tag | url_encode }}">{{ tag | escape }}</a>
-    {%- else -%}
-    <button type="button" class="tag-chip" data-tag="{{ tag | escape }}" aria-pressed="false">{{ tag | escape }}</button>
-    {%- endif %}
-  </li>
+    {%- if tag != "" -%}
+      {%- if include.url -%}
+  <a class="tag-chip" href="{{ include.url }}?tag={{ tag | url_encode }}">{{ tag | escape }}</a>
+      {%- else -%}
+  <button type="button" class="tag-chip" data-tag="{{ tag | escape }}" aria-pressed="false">{{ tag | escape }}</button>
+      {%- endif -%}
     {%- endif -%}
-  {%- endfor %}
-</ul>
+  {%- endfor -%}
+</div>
 {%- endif -%}
