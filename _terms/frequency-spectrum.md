@@ -10,3 +10,7 @@ This works best for natural images (which is why JPG works best on natural image
 ![Natural image vs rendered image](/assets/images/natural-vs-rendered-image-spectrum.png)
 
 It's not possible to perfectly represent the box graph present in the artificial image. You can add as many high frequency sine waves as you like, and you will get a slightly better approximation with each one, but you will eventually hit a wall and the error will converge.
+
+The fourier transform of a box is the sinc function. The amplitude approaches 0 the further we move away from 0 but never truly reaches 0.
+
+![Box Fourier Transform](/assets/images/box-fourier-transform.webp)
