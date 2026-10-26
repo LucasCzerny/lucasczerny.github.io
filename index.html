@@ -2,14 +2,53 @@
 layout: default
 title: Terms
 ---
+{%- assign sorted_terms = site.terms | sort_natural: "title" -%}
+
+{%- comment -%}
+  Collect every tag used by the terms, so the filter bar only offers tags
+  that actually match something. Tags are read from a term's front matter:
+
+    tags: [graph-theory, basics]
+
+  A comma separated string ("graph-theory, basics") works as well.
+{%- endcomment -%}
+{%- assign tag_pool = "" -%}
+{%- for term in sorted_terms -%}
+  {%- assign term_tags = term.tags -%}
+  {%- if term_tags.first == nil and term_tags.size > 0 -%}
+    {%- assign term_tags = term_tags | split: "," -%}
+  {%- endif -%}
+  {%- for raw_tag in term_tags -%}
+    {%- assign tag = raw_tag | strip -%}
+    {%- if tag != "" -%}
+      {%- assign tag_pool = tag_pool | append: tag | append: "|" -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- assign all_tags = tag_pool | split: "|" | uniq | sort_natural -%}
+
 <h1>Terms</h1>
 
-<ul class="terms">
-  {% assign sorted_terms = site.terms | sort_natural: "title" %}
-  {% for term in sorted_terms %}
-    <li>
+{%- if all_tags.size > 0 %}
+<nav class="tag-filter" aria-label="Filter terms by tag">
+  <span class="tag-filter-label">Tags</span>
+  {%- for tag in all_tags %}
+  <button type="button" class="tag-chip" data-tag="{{ tag | escape }}" aria-pressed="false">{{ tag | escape }}</button>
+  {%- endfor %}
+  <button type="button" class="tag-clear" id="tag-clear" hidden>Clear filter</button>
+</nav>
+{%- endif %}
+
+<p class="tag-status" id="tag-status" aria-live="polite"></p>
+
+<ul class="terms" id="terms">
+  {%- for term in sorted_terms %}
+    <li class="term">
       <h2><a href="{{ term.url | relative_url }}">{{ term.title }}</a></h2>
       <p>{{ term.content | markdownify | strip_html | strip_newlines | truncate: 160 }}</p>
+      {% include tag-chips.html tags=term.tags %}
     </li>
-  {% endfor %}
+  {%- endfor %}
 </ul>
+
+<script src="{{ '/assets/terms-filter.js' | relative_url }}" defer></script>

@@ -1,9 +1,11 @@
 ---
 layout: default
 ---
+{%- capture index_url %}{{ '/' | relative_url }}{%- endcapture -%}
 <article>
   <h1>{{ page.title }}</h1>
+  {% include tag-chips.html tags=page.tags url=index_url %}
   {{ content }}
 </article>
 
-<p><a href="{{ '/' | relative_url }}">&larr; All terms</a></p>
+<p><a href="{{ index_url }}">&larr; All terms</a></p>

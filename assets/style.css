@@ -23,6 +23,11 @@ a {
   color: #0366d6;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 .terms {
   list-style: none;
   padding: 0;
@@ -40,4 +45,88 @@ a {
 .terms p {
   margin: 0.25rem 0 0;
   color: #555;
+}
+
+/* Tags */
+
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.5rem;
+}
+
+.tag-filter-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888;
+  margin-right: 0.15rem;
+}
+
+.tag-chip {
+  display: inline-block;
+  font: inherit;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid #d0d7de;
+  border-radius: 999px;
+  background: #f6f8fa;
+  color: #444;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tag-chip:hover {
+  border-color: #0366d6;
+  color: #0366d6;
+}
+
+.tag-chip.is-active,
+.tag-chip[aria-pressed="true"] {
+  background: #0366d6;
+  border-color: #0366d6;
+  color: #fff;
+}
+
+.tag-chip:focus-visible {
+  outline: 2px solid #0366d6;
+  outline-offset: 2px;
+}
+
+.tag-clear {
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 0.15rem 0.3rem;
+  border: 0;
+  background: none;
+  color: #0366d6;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.tag-status {
+  margin: 0 0 1.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.tag-status:empty {
+  display: none;
+}
+
+.term-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+[hidden] {
+  display: none !important;
 }

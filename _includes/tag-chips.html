@@ -1,0 +1,20 @@
+{%- assign chips_tags = include.tags -%}
+{%- if chips_tags.first == nil and chips_tags.size > 0 -%}
+  {%- assign chips_tags = chips_tags | split: "," -%}
+{%- endif -%}
+{%- if chips_tags.size > 0 -%}
+<ul class="term-tags">
+  {%- for raw_tag in chips_tags -%}
+    {%- assign tag = raw_tag | strip -%}
+    {%- if tag != "" %}
+  <li>
+    {%- if include.url -%}
+    <a class="tag-chip" href="{{ include.url }}?tag={{ tag | url_encode }}">{{ tag | escape }}</a>
+    {%- else -%}
+    <button type="button" class="tag-chip" data-tag="{{ tag | escape }}" aria-pressed="false">{{ tag | escape }}</button>
+    {%- endif %}
+  </li>
+    {%- endif -%}
+  {%- endfor %}
+</ul>
+{%- endif -%}
